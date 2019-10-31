@@ -1,0 +1,41 @@
+visualization:
+  use_visdom: True
+  visdom_port: 9001
+  visdom_server: 'http://localhost'
+
+  image:
+    every: 10
+    scale: 2
+
+model:
+  window_size: 224
+  series: 1
+  n: 5
+  residuals: True
+  filters_per_image: 32
+  latent_dim: 1500
+
+dataset:
+  image1_path: '../../data/dataset/img1.png'
+  image2_path: '../../data/dataset/img2.png'
+  images_series_folder: '../../../video-improvement/data/dataset/real_sense_noise/images_series/'
+  clear_images_path: '../../../video-improvement/data/dataset/real_sense_noise/averaged_outclass_series/'
+  edges_images_path: '../../../video-improvement/data/dataset/real_sense_noise/edges_series/'
+  match: True
+  match_base: 'center'
+  match_method: 'ECC'
+  preprocessing: True
+
+train:
+  optimizer: 'sgd'
+  lr: 0.00001
+  weight_decay: 0.0000000001
+
+  epochs: 150
+  batch_size: 1
+  number_of_processes: 4
+
+  save:
+    model: '../../data/weights/ae1/'
+    every: 10
+  load: False
